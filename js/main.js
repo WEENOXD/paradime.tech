@@ -4,63 +4,6 @@
  */
 
 // ==========================================
-// MATRIX RAIN EFFECT
-// ==========================================
-
-const matrixRain = () => {
-    const canvas = document.createElement('canvas');
-    canvas.id = 'matrix-canvas';
-    canvas.style.position = 'fixed';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '1';
-    canvas.style.opacity = '0.15';
-    document.body.prepend(canvas);
-
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const matrix = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?/~`アイウエオカキクケコサシスセソタチツテト01';
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
-
-    const draw = () => {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = '#00ff41';
-        ctx.font = `${fontSize}px monospace`;
-
-        for (let i = 0; i < drops.length; i++) {
-            const text = matrix.charAt(Math.floor(Math.random() * matrix.length));
-            const x = i * fontSize;
-            const y = drops[i] * fontSize;
-
-            ctx.fillText(text, x, y);
-
-            if (y > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
-            drops[i]++;
-        }
-    };
-
-    setInterval(draw, 35);
-
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-};
-
-document.addEventListener('DOMContentLoaded', matrixRain);
-
-// ==========================================
 // TYPEWRITER EFFECT
 // ==========================================
 
@@ -235,7 +178,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ==========================================
+//==========================================
 // HANDWRITTEN HOVER EFFECTS
 // ==========================================
 
@@ -243,14 +186,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const handwrittenElements = document.querySelectorAll('.handwritten');
 
     handwrittenElements.forEach(el => {
+        // Add subtle random initial rotation
+        const initialRotation = (Math.random() - 0.5) * 4;
+        el.style.setProperty('--initial-rotation', `${initialRotation}deg`);
+
         el.addEventListener('mouseenter', () => {
-            const randomRotation = (Math.random() - 0.5) * 4;
-            el.style.transform = `rotate(${randomRotation}deg) scale(1.05)`;
+            const randomRotation = (Math.random() - 0.5) * 6;
+            el.style.transform = `rotate(${randomRotation}deg) scale(1.08)`;
+            el.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
         });
 
         el.addEventListener('mouseleave', () => {
-            el.style.transform = 'rotate(-1deg) scale(1)';
+            el.style.transform = `rotate(${initialRotation}deg) scale(1)`;
         });
+    });
+
+    // Add subtle breathing animation to manifesto text
+    const manifestoLines = document.querySelectorAll('.handwritten-large');
+    manifestoLines.forEach((line, index) => {
+        setTimeout(() => {
+            line.style.opacity = '0';
+            line.style.transform = 'translateY(20px) rotate(-2deg)';
+            setTimeout(() => {
+                line.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                line.style.opacity = '1';
+                line.style.transform = 'translateY(0) rotate(0deg)';
+            }, 50);
+        }, index * 150);
     });
 });
 
@@ -379,121 +341,54 @@ window.addEventListener('load', () => {
 });
 
 // ==========================================
-// RANDOM GLITCH ARTIFACTS
+// SCATTERED SKETCH MARKS
 // ==========================================
 
-const createGlitchArtifact = () => {
-    const artifact = document.createElement('div');
-    artifact.style.position = 'fixed';
-    artifact.style.width = `${Math.random() * 200 + 50}px`;
-    artifact.style.height = `${Math.random() * 3 + 1}px`;
-    artifact.style.background = `rgba(${Math.random() > 0.5 ? '0, 255, 65' : '255, 0, 255'}, ${Math.random() * 0.5 + 0.3})`;
-    artifact.style.left = `${Math.random() * 100}%`;
-    artifact.style.top = `${Math.random() * 100}%`;
-    artifact.style.pointerEvents = 'none';
-    artifact.style.zIndex = '9999';
-    artifact.style.transform = `rotate(${Math.random() * 360}deg)`;
+document.addEventListener('DOMContentLoaded', () => {
+    // Add subtle sketch marks to concept modules
+    const conceptModules = document.querySelectorAll('.concept-module');
 
-    document.body.appendChild(artifact);
-
-    setTimeout(() => {
-        artifact.remove();
-    }, Math.random() * 200 + 100);
-};
-
-// Create random glitch artifacts
-setInterval(() => {
-    if (Math.random() > 0.7) {
-        createGlitchArtifact();
-    }
-}, 3000);
-
-// ==========================================
-// RANDOM SCREEN DISTORTION
-// ==========================================
-
-const screenDistortion = () => {
-    if (Math.random() > 0.98) {
-        document.body.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
-        setTimeout(() => {
-            document.body.style.transform = 'translate(0, 0)';
-        }, 50);
-    }
-};
-
-setInterval(screenDistortion, 100);
-
-// ==========================================
-// RANDOM TEXT CORRUPTION
-// ==========================================
-
-const corruptText = () => {
-    const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`';
-    const elements = document.querySelectorAll('h1, h2, h3, .handwritten, .handwritten-large');
-
-    if (Math.random() > 0.95 && elements.length > 0) {
-        const randomEl = elements[Math.floor(Math.random() * elements.length)];
-        const originalText = randomEl.getAttribute('data-original-text') || randomEl.textContent;
-
-        if (!randomEl.getAttribute('data-original-text')) {
-            randomEl.setAttribute('data-original-text', originalText);
-        }
-
-        // Corrupt a random character
-        const chars = originalText.split('');
-        const randomIndex = Math.floor(Math.random() * chars.length);
-        chars[randomIndex] = glitchChars[Math.floor(Math.random() * glitchChars.length)];
-        randomEl.textContent = chars.join('');
-
-        setTimeout(() => {
-            randomEl.textContent = originalText;
-        }, 100);
-    }
-};
-
-setInterval(corruptText, 2000);
+    conceptModules.forEach(module => {
+        const sketchMark = document.createElement('div');
+        sketchMark.style.position = 'absolute';
+        sketchMark.style.bottom = '15px';
+        sketchMark.style.left = '20px';
+        sketchMark.style.fontSize = '0.8rem';
+        sketchMark.style.color = 'rgba(201, 168, 130, 0.3)';
+        sketchMark.style.fontFamily = "'Courier New', monospace";
+        sketchMark.style.fontStyle = 'italic';
+        sketchMark.textContent = '—';
+        module.appendChild(sketchMark);
+    });
+});
 
 // ==========================================
 // CONSOLE MESSAGE
 // ==========================================
 
 console.log(`
-%c██████╗  █████╗ ██████╗  █████╗ ██████╗ ██╗ ██████╗ ███╗   ███╗
-%c██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║██╔════╝ ████╗ ████║
-%c██████╔╝███████║██████╔╝███████║██║  ██║██║██║  ███╗██╔████╔██║
-%c██╔═══╝ ██╔══██║██╔══██╗██╔══██║██║  ██║██║██║   ██║██║╚██╔╝██║
-%c██║     ██║  ██║██║  ██║██║  ██║██████╔╝██║╚██████╔╝██║ ╚═╝ ██║
-%c╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝ ╚═╝     ╚═╝
+%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-%call human-made creations that extend and change our abilities
+  PARADIGM TECHNOLOGIES
 
-%c[ SYSTEM ONLINE ]
-%cInitializing cyberpunk protocol...
-%cMatrix rain: ACTIVE
-%cGlitch artifacts: ENABLED
-%cChaos mode: MAXIMUM
+  all human-made creations that
+  extend and change our abilities
 
-%cEaster Eggs:
-- Triple-click anywhere
-- Press Shift + P
-- Click the terminal
-- Click moodboard cells
-- Watch everything glitch
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-%c> EMBRACE THE CHAOS <
+%c  Explore:
+  → Triple-click anywhere for hidden thoughts
+  → Press Shift + P to face your fear
+  → Click the terminal to see reality shift
+  → Interact with the moodboard
+  → Watch the ocean waves breathe
+
+%c  "bravery over perfection
+   feeling over thought"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 `,
-'font-size: 10px; color: #00ff41; font-family: monospace;',
-'font-size: 10px; color: #00ff41; font-family: monospace;',
-'font-size: 10px; color: #00ff41; font-family: monospace;',
-'font-size: 10px; color: #00ff41; font-family: monospace;',
-'font-size: 10px; color: #00ff41; font-family: monospace;',
-'font-size: 10px; color: #00ff41; font-family: monospace;',
-'font-size: 14px; font-style: italic; color: #00f0ff;',
-'font-size: 12px; color: #ff00ff;',
-'font-size: 12px; color: #00ff41;',
-'font-size: 12px; color: #ff00ff;',
-'font-size: 12px; color: #00f0ff;',
-'font-size: 12px; color: #ffff00;',
-'font-size: 12px; color: #00f0ff;',
-'font-size: 14px; color: #ff00ff; font-weight: bold;'
+'font-family: "Courier New", monospace; font-size: 14px; color: #2C2C2C; line-height: 1.6;',
+'font-family: "Courier New", monospace; font-size: 12px; color: #5A7C7E; line-height: 1.8;',
+'font-family: "Courier New", monospace; font-size: 11px; color: #C9A882; font-style: italic; line-height: 1.6;'
 );
