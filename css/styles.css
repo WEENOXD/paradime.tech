@@ -1,0 +1,729 @@
+/* ==========================================
+   PARADIGM TECHNOLOGIES - STYLESHEET
+   Raw Digital Humanism + Futuristic Minimalism
+   ========================================== */
+
+/* CSS Variables - Color Palette */
+:root {
+    /* Core Palette */
+    --white: #FFFFFF;
+    --museum-white: #FAFAFA;
+    --clay-brown: #C9A882;
+    --charcoal: #2C2C2C;
+    --graphite: #6B6B6B;
+    --ocean-teal: #5A7C7E;
+    --black-ink: #000000;
+    --fear-red: #D32F2F;
+
+    /* Typography */
+    --font-primary: 'Helvetica Neue', 'Arial', sans-serif;
+    --font-handwritten: 'Courier New', 'Courier', monospace;
+
+    /* Spacing */
+    --section-padding: 8rem 2rem;
+    --grid-size: 20px;
+}
+
+/* ==========================================
+   RESET & BASE STYLES
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--museum-white);
+    color: var(--black-ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ==========================================
+   RIPPLE EFFECT CONTAINER
+   ========================================== */
+
+#ripple-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(90, 124, 126, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.8s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ==========================================
+   HERO SECTION
+   ========================================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    position: relative;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 900px;
+    padding: 2rem;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    color: var(--black-ink);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.oval-line {
+    width: 600px;
+    height: 2px;
+    border: 1px solid var(--black-ink);
+    border-radius: 50%;
+    margin: 0 auto 3rem;
+    max-width: 90%;
+}
+
+.typewriter {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--graphite);
+    letter-spacing: 0.05em;
+    min-height: 2em;
+    font-style: italic;
+}
+
+/* ==========================================
+   NOTES SECTION - GRID PAPER
+   ========================================== */
+
+.notes-section {
+    padding: var(--section-padding);
+    background-color: var(--museum-white);
+    background-image:
+        linear-gradient(rgba(107, 107, 107, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(107, 107, 107, 0.03) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    position: relative;
+    min-height: 80vh;
+}
+
+.grid-paper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 4rem;
+    padding: 4rem 2rem;
+}
+
+.note {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.note.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.handwritten {
+    font-family: var(--font-handwritten);
+    font-size: 1.4rem;
+    color: var(--charcoal);
+    line-height: 1.8;
+    display: inline-block;
+    transform: rotate(-1deg);
+    position: relative;
+    padding: 1rem;
+}
+
+.handwritten::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(201, 168, 130, 0.1);
+    top: -5px;
+    left: -5px;
+    z-index: -1;
+    transform: rotate(1deg);
+}
+
+/* ==========================================
+   OCEAN DIVIDER
+   ========================================== */
+
+.ocean-section {
+    width: 100%;
+    height: 60vh;
+    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%232C2C2C" width="1200" height="600"/><path fill="%233A3A3A" d="M0 300 Q300 200 600 300 T1200 300 V600 H0 Z"/><path fill="%23000000" opacity="0.3" d="M0 350 Q300 280 600 350 T1200 350 V600 H0 Z"/></svg>');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ocean-overlay {
+    text-align: center;
+}
+
+.ocean-text {
+    font-size: 2.5rem;
+    color: var(--white);
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: lowercase;
+}
+
+/* ==========================================
+   PHILOSOPHY SECTION
+   ========================================== */
+
+.philosophy-section {
+    padding: var(--section-padding);
+    background-color: var(--white);
+}
+
+.philosophy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.manifesto {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.handwritten-large {
+    font-family: var(--font-handwritten);
+    font-size: 1.8rem;
+    color: var(--charcoal);
+    line-height: 1.6;
+    transform: rotate(-0.5deg);
+    transition: all 0.3s ease;
+}
+
+.handwritten-large:hover {
+    transform: rotate(0deg) scale(1.05);
+    color: var(--black-ink);
+}
+
+/* ==========================================
+   CONCEPTS SECTION
+   ========================================== */
+
+.concepts-section {
+    padding: var(--section-padding);
+    background-color: var(--museum-white);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    margin-bottom: 6rem;
+    color: var(--black-ink);
+}
+
+.concept-module {
+    max-width: 1000px;
+    margin: 0 auto 8rem;
+    padding: 4rem 2rem;
+    background: var(--white);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+}
+
+.concept-module:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.concept-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.concept-header h3 {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+}
+
+.concept-tagline {
+    font-size: 1rem;
+    color: var(--graphite);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.concept-description {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--graphite);
+    margin-top: 2rem;
+    font-style: italic;
+}
+
+/* ACOSTA - Blueprint */
+.blueprint-container {
+    height: 300px;
+    position: relative;
+    background: linear-gradient(to bottom, #f5f5f5, #ffffff);
+    border: 1px solid var(--graphite);
+}
+
+.blueprint-grid {
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.blueprint-lines {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border: 2px solid var(--ocean-teal);
+    border-radius: 50%;
+}
+
+.blueprint-lines::before,
+.blueprint-lines::after {
+    content: '';
+    position: absolute;
+    background: var(--ocean-teal);
+}
+
+.blueprint-lines::before {
+    width: 2px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.blueprint-lines::after {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* TERM1 - Terminal */
+.terminal-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.terminal {
+    background: var(--charcoal);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+}
+
+.terminal-header {
+    background: #3C3C3C;
+    padding: 0.8rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-dot.red { background: #FF5F56; }
+.terminal-dot.yellow { background: #FFBD2E; }
+.terminal-dot.green { background: #27C93F; }
+
+.terminal-body {
+    padding: 2rem;
+    color: #0F0;
+    font-size: 1rem;
+}
+
+.terminal-line {
+    margin-bottom: 0.5rem;
+}
+
+.prompt {
+    color: var(--ocean-teal);
+    margin-right: 0.5rem;
+}
+
+.output {
+    color: #888;
+}
+
+.cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* FORM - Moodboard */
+.moodboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.mood-cell {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, var(--clay-brown), var(--ocean-teal));
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.mood-cell:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.mood-cell:nth-child(1) { background: linear-gradient(135deg, #C9A882, #F5F5F5); }
+.mood-cell:nth-child(2) { background: linear-gradient(135deg, #5A7C7E, #2C2C2C); }
+.mood-cell:nth-child(3) { background: linear-gradient(135deg, #6B6B6B, #FFFFFF); }
+.mood-cell:nth-child(4) { background: linear-gradient(135deg, #2C2C2C, #C9A882); }
+
+/* MIRROR - Reflective */
+.mirror-container {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mirror-glass {
+    width: 80%;
+    max-width: 600px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.mirror-pulse {
+    font-size: 1.5rem;
+    color: var(--charcoal);
+    font-weight: 300;
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* COOKIE MONSTER - Silhouette */
+.cookie-container {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cookie-silhouette {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at 30% 30%, var(--charcoal), var(--black-ink));
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.cookie-silhouette::before,
+.cookie-silhouette::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: var(--clay-brown);
+    border-radius: 50%;
+}
+
+.cookie-silhouette::before {
+    top: 20%;
+    left: 20%;
+}
+
+.cookie-silhouette::after {
+    bottom: 30%;
+    right: 25%;
+}
+
+/* ==========================================
+   NOSTALGIA SECTION
+   ========================================== */
+
+.nostalgia-section {
+    padding: var(--section-padding);
+    background-color: var(--white);
+    text-align: center;
+}
+
+.nostalgic-title {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    margin-bottom: 4rem;
+    color: var(--charcoal);
+}
+
+.device-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.device-frame {
+    width: 200px;
+    height: 350px;
+    background: linear-gradient(135deg, #2C2C2C, #3C3C3C);
+    border-radius: 20px;
+    border: 3px solid var(--charcoal);
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.device-frame::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 5px;
+    background: #1C1C1C;
+    border-radius: 5px;
+}
+
+.device-caption {
+    font-size: 1rem;
+    color: var(--graphite);
+    font-style: italic;
+}
+
+/* ==========================================
+   EASTER EGG - FEAR
+   ========================================== */
+
+.easter-egg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: opacity 0.3s ease;
+}
+
+.easter-egg.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.easter-egg-content {
+    position: relative;
+    background: var(--white);
+    padding: 4rem;
+    max-width: 600px;
+    text-align: center;
+}
+
+.fear-drawing {
+    font-family: var(--font-handwritten);
+}
+
+.fear-text {
+    font-size: 2rem;
+    line-height: 1.4;
+    color: var(--black-ink);
+    font-weight: bold;
+}
+
+.fear-red {
+    color: var(--fear-red);
+    font-size: 3rem;
+    display: block;
+    margin-top: 1rem;
+}
+
+.close-easter-egg {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--charcoal);
+    transition: color 0.3s ease;
+}
+
+.close-easter-egg:hover {
+    color: var(--fear-red);
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+.footer {
+    padding: 6rem 2rem;
+    background-color: var(--white);
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    margin-bottom: 1rem;
+}
+
+.footer-subtext {
+    font-size: 1rem;
+    color: var(--graphite);
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.footer-oval {
+    width: 400px;
+    height: 2px;
+    border: 1px solid var(--black-ink);
+    border-radius: 50%;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+/* ==========================================
+   SCROLL REVEAL ANIMATION
+   ========================================== */
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 4rem 1.5rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        letter-spacing: 0.2em;
+    }
+
+    .oval-line {
+        width: 300px;
+    }
+
+    .ocean-text {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .handwritten-large {
+        font-size: 1.4rem;
+    }
+
+    .concept-module {
+        padding: 2rem 1rem;
+        margin-bottom: 4rem;
+    }
+
+    .grid-paper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* ==========================================
+   UTILITY CLASSES
+   ========================================== */
+
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}
