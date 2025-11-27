@@ -4,6 +4,63 @@
  */
 
 // ==========================================
+// MATRIX RAIN EFFECT
+// ==========================================
+
+const matrixRain = () => {
+    const canvas = document.createElement('canvas');
+    canvas.id = 'matrix-canvas';
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '1';
+    canvas.style.opacity = '0.15';
+    document.body.prepend(canvas);
+
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const matrix = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?/~`アイウエオカキクケコサシスセソタチツテト01';
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    const draw = () => {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#00ff41';
+        ctx.font = `${fontSize}px monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = matrix.charAt(Math.floor(Math.random() * matrix.length));
+            const x = i * fontSize;
+            const y = drops[i] * fontSize;
+
+            ctx.fillText(text, x, y);
+
+            if (y > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    };
+
+    setInterval(draw, 35);
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+};
+
+document.addEventListener('DOMContentLoaded', matrixRain);
+
+// ==========================================
 // TYPEWRITER EFFECT
 // ==========================================
 
@@ -322,24 +379,121 @@ window.addEventListener('load', () => {
 });
 
 // ==========================================
+// RANDOM GLITCH ARTIFACTS
+// ==========================================
+
+const createGlitchArtifact = () => {
+    const artifact = document.createElement('div');
+    artifact.style.position = 'fixed';
+    artifact.style.width = `${Math.random() * 200 + 50}px`;
+    artifact.style.height = `${Math.random() * 3 + 1}px`;
+    artifact.style.background = `rgba(${Math.random() > 0.5 ? '0, 255, 65' : '255, 0, 255'}, ${Math.random() * 0.5 + 0.3})`;
+    artifact.style.left = `${Math.random() * 100}%`;
+    artifact.style.top = `${Math.random() * 100}%`;
+    artifact.style.pointerEvents = 'none';
+    artifact.style.zIndex = '9999';
+    artifact.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+    document.body.appendChild(artifact);
+
+    setTimeout(() => {
+        artifact.remove();
+    }, Math.random() * 200 + 100);
+};
+
+// Create random glitch artifacts
+setInterval(() => {
+    if (Math.random() > 0.7) {
+        createGlitchArtifact();
+    }
+}, 3000);
+
+// ==========================================
+// RANDOM SCREEN DISTORTION
+// ==========================================
+
+const screenDistortion = () => {
+    if (Math.random() > 0.98) {
+        document.body.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+        setTimeout(() => {
+            document.body.style.transform = 'translate(0, 0)';
+        }, 50);
+    }
+};
+
+setInterval(screenDistortion, 100);
+
+// ==========================================
+// RANDOM TEXT CORRUPTION
+// ==========================================
+
+const corruptText = () => {
+    const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`';
+    const elements = document.querySelectorAll('h1, h2, h3, .handwritten, .handwritten-large');
+
+    if (Math.random() > 0.95 && elements.length > 0) {
+        const randomEl = elements[Math.floor(Math.random() * elements.length)];
+        const originalText = randomEl.getAttribute('data-original-text') || randomEl.textContent;
+
+        if (!randomEl.getAttribute('data-original-text')) {
+            randomEl.setAttribute('data-original-text', originalText);
+        }
+
+        // Corrupt a random character
+        const chars = originalText.split('');
+        const randomIndex = Math.floor(Math.random() * chars.length);
+        chars[randomIndex] = glitchChars[Math.floor(Math.random() * glitchChars.length)];
+        randomEl.textContent = chars.join('');
+
+        setTimeout(() => {
+            randomEl.textContent = originalText;
+        }, 100);
+    }
+};
+
+setInterval(corruptText, 2000);
+
+// ==========================================
 // CONSOLE MESSAGE
 // ==========================================
 
 console.log(`
-%cPARADIGM TECHNOLOGIES
+%c██████╗  █████╗ ██████╗  █████╗ ██████╗ ██╗ ██████╗ ███╗   ███╗
+%c██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║██╔════╝ ████╗ ████║
+%c██████╔╝███████║██████╔╝███████║██║  ██║██║██║  ███╗██╔████╔██║
+%c██╔═══╝ ██╔══██║██╔══██╗██╔══██║██║  ██║██║██║   ██║██║╚██╔╝██║
+%c██║     ██║  ██║██║  ██║██║  ██║██████╔╝██║╚██████╔╝██║ ╚═╝ ██║
+%c╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝ ╚═╝     ╚═╝
+
 %call human-made creations that extend and change our abilities
+
+%c[ SYSTEM ONLINE ]
+%cInitializing cyberpunk protocol...
+%cMatrix rain: ACTIVE
+%cGlitch artifacts: ENABLED
+%cChaos mode: MAXIMUM
 
 %cEaster Eggs:
 - Triple-click anywhere
 - Press Shift + P
 - Click the terminal
 - Click moodboard cells
-- Watch the blueprint rotate
+- Watch everything glitch
 
-%cMade with intention, not perfection.
+%c> EMBRACE THE CHAOS <
 `,
-'font-size: 24px; font-weight: bold; letter-spacing: 0.3em;',
-'font-size: 14px; font-style: italic; color: #6B6B6B;',
-'font-size: 12px; color: #5A7C7E;',
-'font-size: 10px; color: #C9A882; font-style: italic;'
+'font-size: 10px; color: #00ff41; font-family: monospace;',
+'font-size: 10px; color: #00ff41; font-family: monospace;',
+'font-size: 10px; color: #00ff41; font-family: monospace;',
+'font-size: 10px; color: #00ff41; font-family: monospace;',
+'font-size: 10px; color: #00ff41; font-family: monospace;',
+'font-size: 10px; color: #00ff41; font-family: monospace;',
+'font-size: 14px; font-style: italic; color: #00f0ff;',
+'font-size: 12px; color: #ff00ff;',
+'font-size: 12px; color: #00ff41;',
+'font-size: 12px; color: #ff00ff;',
+'font-size: 12px; color: #00f0ff;',
+'font-size: 12px; color: #ffff00;',
+'font-size: 12px; color: #00f0ff;',
+'font-size: 14px; color: #ff00ff; font-weight: bold;'
 );
