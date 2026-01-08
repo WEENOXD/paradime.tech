@@ -1,1057 +1,125 @@
-/* ==========================================
-   PARADIGM TECHNOLOGIES - STYLESHEET
-   Raw Digital Humanism + Futuristic Minimalism
-   ========================================== */
-
-/* CSS Variables - Color Palette */
-:root {
-    /* Core Palette */
-    --white: #FFFFFF;
-    --museum-white: #FAFAFA;
-    --clay-brown: #C9A882;
-    --charcoal: #2C2C2C;
-    --graphite: #6B6B6B;
-    --ocean-teal: #5A7C7E;
-    --black-ink: #000000;
-    --fear-red: #D32F2F;
-
-    /* Typography */
-    --font-primary: 'Helvetica Neue', 'Arial', sans-serif;
-    --font-handwritten: 'Courier New', 'Courier', monospace;
-
-    /* Spacing */
-    --section-padding: 8rem 2rem;
-    --grid-size: 20px;
-}
-
-/* ==========================================
-   RESET & BASE STYLES
-   ========================================== */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-}
-
 body {
-    font-family: var(--font-primary);
-    background:
-        radial-gradient(circle at 20% 30%, rgba(201, 168, 130, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(90, 124, 126, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 50% 90%, rgba(201, 168, 130, 0.05) 0%, transparent 50%),
-        linear-gradient(135deg, rgba(250, 250, 245, 1) 0%, rgba(255, 255, 255, 1) 100%);
-    color: var(--black-ink);
-    line-height: 1.6;
-    overflow-x: hidden;
-    position: relative;
-}
-
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(201, 168, 130, 0.025) 2px,
-            rgba(201, 168, 130, 0.025) 3px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 2px,
-            rgba(90, 124, 126, 0.015) 2px,
-            rgba(90, 124, 126, 0.015) 3px
-        );
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* ==========================================
-   RIPPLE EFFECT CONTAINER
-   ========================================== */
-
-#ripple-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-}
-
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(90, 124, 126, 0.3);
-    transform: scale(0);
-    animation: ripple-animation 0.8s ease-out;
-    pointer-events: none;
-}
-
-@keyframes ripple-animation {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
-}
-
-/* ==========================================
-   HERO SECTION
-   ========================================== */
-
-.hero {
+    background: #ffffff;
     min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Main centered Minecraft-style text */
+.main-text {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background:
-        linear-gradient(135deg, rgba(201, 168, 130, 0.05) 0%, transparent 50%),
-        linear-gradient(-45deg, rgba(90, 124, 126, 0.05) 0%, transparent 50%),
-        var(--white);
-    position: relative;
-    overflow: hidden;
+    width: 100%;
 }
 
-.hero::before {
-    content: 'create';
-    position: absolute;
-    top: 15%;
-    right: 10%;
-    font-family: var(--font-handwritten);
-    font-size: 1.5rem;
-    color: rgba(201, 168, 130, 0.15);
-    transform: rotate(15deg);
-    font-style: italic;
-}
-
-.hero::after {
-    content: 'evolve';
-    position: absolute;
-    bottom: 20%;
-    left: 8%;
-    font-family: var(--font-handwritten);
-    font-size: 1.5rem;
-    color: rgba(90, 124, 126, 0.15);
-    transform: rotate(-12deg);
-    font-style: italic;
-}
-
-.hero-content {
-    text-align: center;
-    max-width: 900px;
-    padding: 2rem;
-    position: relative;
-    z-index: 1;
-}
-
-.logo {
-    font-size: 2.5rem;
+.main-text h1 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(2rem, 8vw, 6rem);
+    color: #000000;
     font-weight: 400;
-    letter-spacing: 0.4em;
-    color: var(--charcoal);
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    position: relative;
-}
-
-.logo::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--clay-brown), transparent);
-}
-
-.oval-line {
-    width: 600px;
-    height: 2px;
-    border: 1px solid var(--black-ink);
-    border-radius: 50%;
-    margin: 0 auto 3rem;
-    max-width: 90%;
-}
-
-.typewriter {
-    font-size: 1.2rem;
-    font-weight: 300;
-    color: var(--graphite);
     letter-spacing: 0.05em;
-    min-height: 2em;
-    font-style: italic;
-}
-
-/* ==========================================
-   NOTES SECTION - GRID PAPER
-   ========================================== */
-
-.notes-section {
-    padding: var(--section-padding);
-    background-color: #F5F5F0;
-    background-image:
-        linear-gradient(rgba(201, 168, 130, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201, 168, 130, 0.08) 1px, transparent 1px);
-    background-size: var(--grid-size) var(--grid-size);
-    position: relative;
-    min-height: 80vh;
-    overflow: hidden;
-}
-
-.notes-section::before {
-    content: '→';
-    position: absolute;
-    top: 12%;
-    left: 5%;
-    font-size: 3rem;
-    color: rgba(201, 168, 130, 0.2);
-    transform: rotate(25deg);
-}
-
-.notes-section::after {
-    content: '*';
-    position: absolute;
-    bottom: 15%;
-    right: 8%;
-    font-size: 4rem;
-    color: rgba(90, 124, 126, 0.15);
-    font-family: serif;
-}
-
-.grid-paper {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 4rem;
-    padding: 4rem 2rem;
-}
-
-.note {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.note.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.handwritten {
-    font-family: var(--font-handwritten);
-    font-size: 1.5rem;
-    color: var(--charcoal);
-    line-height: 1.9;
-    display: inline-block;
-    transform: rotate(-2deg);
-    position: relative;
-    padding: 1.5rem;
-    border-left: 3px solid rgba(201, 168, 130, 0.3);
-    padding-left: 2rem;
-}
-
-.handwritten::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        linear-gradient(135deg, rgba(201, 168, 130, 0.08) 0%, transparent 100%);
-    top: -5px;
-    left: -5px;
-    z-index: -1;
-    transform: rotate(1deg);
-    border-radius: 2px;
-}
-
-.handwritten::after {
-    content: '—';
-    position: absolute;
-    left: 0.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--clay-brown);
-    opacity: 0.4;
-}
-
-/* ==========================================
-   OCEAN DIVIDER
-   ========================================== */
-
-.ocean-section {
-    width: 100%;
-    height: 70vh;
-    background:
-        linear-gradient(180deg, rgba(90, 124, 126, 0.4) 0%, rgba(90, 124, 126, 0.6) 50%, rgba(44, 44, 44, 0.8) 100%),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%235A7C7E" width="1200" height="600"/><path fill="%234A6C6E" opacity="0.6" d="M0 250 Q300 200 600 250 T1200 250 V600 H0 Z"/><path fill="%233A5C5E" opacity="0.7" d="M0 320 Q300 270 600 320 T1200 320 V600 H0 Z"/><path fill="%232C4C4E" opacity="0.8" d="M0 400 Q300 350 600 400 T1200 400 V600 H0 Z"/></svg>');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.ocean-section::before {
-    content: '~';
-    position: absolute;
-    top: 20%;
-    left: 15%;
-    font-size: 5rem;
-    color: rgba(255, 255, 255, 0.1);
-    font-family: serif;
-    animation: float 6s ease-in-out infinite;
-}
-
-.ocean-section::after {
-    content: '~';
-    position: absolute;
-    bottom: 25%;
-    right: 20%;
-    font-size: 4rem;
-    color: rgba(255, 255, 255, 0.08);
-    font-family: serif;
-    animation: float 8s ease-in-out infinite reverse;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-.ocean-overlay {
     text-align: center;
-    position: relative;
-    z-index: 10;
+    padding: 0 1rem;
 }
 
-.ocean-overlay::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 40px;
-    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.3));
-}
-
-.ocean-text {
-    font-size: 3rem;
-    color: var(--white);
-    font-weight: 300;
-    letter-spacing: 0.3em;
-    text-transform: lowercase;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-    font-family: var(--font-primary);
-}
-
-/* ==========================================
-   PHILOSOPHY SECTION
-   ========================================== */
-
-.philosophy-section {
-    padding: var(--section-padding);
-    background:
-        radial-gradient(circle at 70% 30%, rgba(201, 168, 130, 0.04) 0%, transparent 60%),
-        var(--white);
-    position: relative;
-    overflow: hidden;
-}
-
-.philosophy-section::before {
-    content: '"';
-    position: absolute;
-    top: 10%;
-    left: 5%;
-    font-size: 15rem;
-    color: rgba(201, 168, 130, 0.06);
-    font-family: Georgia, serif;
-    line-height: 0.8;
-}
-
-.philosophy-section::after {
-    content: '⁂';
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-    font-size: 3rem;
-    color: rgba(90, 124, 126, 0.1);
-}
-
-.philosophy-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-.manifesto {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    padding: 3rem 2rem;
-}
-
-.handwritten-large {
-    font-family: var(--font-handwritten);
-    font-size: 2rem;
-    color: var(--charcoal);
-    line-height: 1.7;
-    transform: rotate(-1deg);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    padding: 0.5rem 0;
-}
-
-.handwritten-large::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--clay-brown);
-    transition: width 0.4s ease;
-}
-
-.handwritten-large:hover {
-    transform: rotate(1deg) scale(1.02);
-    color: var(--black-ink);
-}
-
-.handwritten-large:hover::before {
-    width: 100%;
-}
-
-.handwritten-large:nth-child(even) {
-    transform: rotate(0.8deg);
-}
-
-.handwritten-large:nth-child(3n) {
-    transform: rotate(-0.6deg);
-}
-
-/* ==========================================
-   CONCEPTS SECTION
-   ========================================== */
-
-.concepts-section {
-    padding: var(--section-padding);
-    background-color: var(--museum-white);
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 300;
-    letter-spacing: 0.3em;
-    margin-bottom: 6rem;
-    color: var(--black-ink);
-}
-
-.concept-module {
-    max-width: 1000px;
-    margin: 0 auto 8rem;
-    padding: 4rem 2rem;
-    background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 245, 1) 100%);
-    border: 1px solid rgba(201, 168, 130, 0.15);
-    border-left: 4px solid rgba(201, 168, 130, 0.3);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
-}
-
-.concept-module::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgba(201, 168, 130, 0.1);
-    border-radius: 50%;
-    pointer-events: none;
-}
-
-.concept-module:hover {
-    transform: translateY(-8px) rotate(0.5deg);
-    box-shadow: 0 15px 50px rgba(201, 168, 130, 0.15);
-    border-left-color: var(--ocean-teal);
-}
-
-.concept-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.concept-header h3 {
-    font-size: 2rem;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    margin-bottom: 0.5rem;
-}
-
-.concept-tagline {
-    font-size: 1rem;
-    color: var(--graphite);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-.concept-description {
-    text-align: center;
-    font-size: 1.1rem;
-    color: var(--graphite);
-    margin-top: 2rem;
-    font-style: italic;
-}
-
-/* ACOSTA - Blueprint */
-.blueprint-container {
-    height: 300px;
-    position: relative;
-    background: linear-gradient(to bottom, #f5f5f5, #ffffff);
-    border: 1px solid var(--graphite);
-}
-
-.blueprint-grid {
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-
-.blueprint-lines {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 200px;
-    border: 2px solid var(--ocean-teal);
-    border-radius: 50%;
-}
-
-.blueprint-lines::before,
-.blueprint-lines::after {
-    content: '';
-    position: absolute;
-    background: var(--ocean-teal);
-}
-
-.blueprint-lines::before {
-    width: 2px;
-    height: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.blueprint-lines::after {
-    width: 100%;
-    height: 2px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/* TERM1 - Terminal */
-.terminal-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.terminal {
-    background: var(--charcoal);
-    border-radius: 8px;
-    overflow: hidden;
-    font-family: 'Courier New', monospace;
-}
-
-.terminal-header {
-    background: #3C3C3C;
-    padding: 0.8rem;
-    display: flex;
-    gap: 0.5rem;
-}
-
-.terminal-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
-.terminal-dot.red { background: #FF5F56; }
-.terminal-dot.yellow { background: #FFBD2E; }
-.terminal-dot.green { background: #27C93F; }
-
-.terminal-body {
-    padding: 2rem;
-    color: #0F0;
-    font-size: 1rem;
-}
-
-.terminal-line {
-    margin-bottom: 0.5rem;
-}
-
-.prompt {
-    color: var(--ocean-teal);
-    margin-right: 0.5rem;
-}
-
-.output {
-    color: #888;
-}
-
-.cursor {
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 49% { opacity: 1; }
-    50%, 100% { opacity: 0; }
-}
-
-/* FORM - Moodboard */
-.moodboard-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.mood-cell {
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, var(--clay-brown), var(--ocean-teal));
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.mood-cell:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.mood-cell:nth-child(1) { background: linear-gradient(135deg, #C9A882, #F5F5F5); }
-.mood-cell:nth-child(2) { background: linear-gradient(135deg, #5A7C7E, #2C2C2C); }
-.mood-cell:nth-child(3) { background: linear-gradient(135deg, #6B6B6B, #FFFFFF); }
-.mood-cell:nth-child(4) { background: linear-gradient(135deg, #2C2C2C, #C9A882); }
-
-/* MIRROR - Reflective */
-.mirror-container {
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mirror-glass {
-    width: 80%;
-    max-width: 600px;
-    height: 200px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.mirror-pulse {
-    font-size: 1.5rem;
-    color: var(--charcoal);
-    font-weight: 300;
-    animation: pulse 3s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-}
-
-/* COOKIE MONSTER - Silhouette */
-.cookie-container {
-    height: 300px;
+/* Font cascade - different fonts going down */
+.font-cascade {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-
-.cookie-silhouette {
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle at 30% 30%, var(--charcoal), var(--black-ink));
-    border-radius: 50%;
-    position: relative;
-    margin-bottom: 2rem;
-}
-
-.cookie-silhouette::before,
-.cookie-silhouette::after {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: var(--clay-brown);
-    border-radius: 50%;
-}
-
-.cookie-silhouette::before {
-    top: 20%;
-    left: 20%;
-}
-
-.cookie-silhouette::after {
-    bottom: 30%;
-    right: 25%;
-}
-
-/* ==========================================
-   NOSTALGIA SECTION
-   ========================================== */
-
-.nostalgia-section {
-    padding: var(--section-padding);
-    background-color: var(--white);
-    text-align: center;
-}
-
-.nostalgic-title {
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    margin-bottom: 4rem;
-    color: var(--charcoal);
-}
-
-.device-showcase {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-.device-frame {
-    width: 200px;
-    height: 350px;
-    background: linear-gradient(135deg, #2C2C2C, #3C3C3C);
-    border-radius: 20px;
-    border: 3px solid var(--charcoal);
-    position: relative;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-}
-
-.device-frame::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 5px;
-    background: #1C1C1C;
-    border-radius: 5px;
-}
-
-.device-caption {
-    font-size: 1rem;
-    color: var(--graphite);
-    font-style: italic;
-}
-
-/* ==========================================
-   EASTER EGG - FEAR
-   ========================================== */
-
-.easter-egg {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    transition: opacity 0.3s ease;
+    padding-bottom: 10vh;
 }
 
-.easter-egg.hidden {
-    display: none;
-    opacity: 0;
-}
-
-.easter-egg-content {
-    position: relative;
-    background: var(--white);
-    padding: 4rem;
-    max-width: 600px;
+.font-cascade p {
+    color: #000000;
+    font-size: clamp(1.5rem, 5vw, 4rem);
+    margin: 2rem 0;
     text-align: center;
+    padding: 0 1rem;
 }
 
-.fear-drawing {
-    font-family: var(--font-handwritten);
-}
-
-.fear-text {
-    font-size: 2rem;
-    line-height: 1.4;
-    color: var(--black-ink);
-    font-weight: bold;
-}
-
-.fear-red {
-    color: var(--fear-red);
-    font-size: 3rem;
-    display: block;
-    margin-top: 1rem;
-}
-
-.close-easter-egg {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    color: var(--charcoal);
-    transition: color 0.3s ease;
-}
-
-.close-easter-egg:hover {
-    color: var(--fear-red);
-}
-
-/* ==========================================
-   FOOTER
-   ========================================== */
-
-.footer {
-    padding: 6rem 2rem;
-    background-color: var(--white);
-    text-align: center;
-}
-
-.footer-text {
-    font-size: 1.5rem;
-    font-weight: 300;
-    letter-spacing: 0.3em;
-    margin-bottom: 1rem;
-}
-
-.footer-subtext {
-    font-size: 1rem;
-    color: var(--graphite);
-    font-style: italic;
-    margin-bottom: 2rem;
-}
-
-.footer-oval {
-    width: 400px;
-    height: 2px;
-    border: 1px solid var(--black-ink);
-    border-radius: 50%;
-    margin: 0 auto;
-    max-width: 90%;
-}
-
-/* ==========================================
-   SCROLL REVEAL ANIMATION
-   ========================================== */
-
-.reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reveal-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ==========================================
-   RESPONSIVE DESIGN
-   ========================================== */
-
-@media (max-width: 768px) {
-    :root {
-        --section-padding: 4rem 1.5rem;
-    }
-
-    .logo {
-        font-size: 1.5rem;
-        letter-spacing: 0.2em;
-    }
-
-    .oval-line {
-        width: 300px;
-    }
-
-    .ocean-text {
-        font-size: 1.5rem;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    .handwritten-large {
-        font-size: 1.4rem;
-    }
-
-    .concept-module {
-        padding: 2rem 1rem;
-        margin-bottom: 4rem;
-    }
-
-    .grid-paper {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-}
-
-/* ==========================================
-   SCATTERED SKETCH ELEMENTS
-   ========================================== */
-
-.scattered-notes,
-.section-sketches,
-.ocean-notes,
-.concepts-sketches,
-.module-sketches {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.sketch-note,
-.sketch-note-small,
-.water-note,
-.tech-note,
-.sketch-annotation {
-    position: absolute;
-    font-family: var(--font-handwritten);
-    color: rgba(201, 168, 130, 0.4);
-    font-size: 1rem;
-    font-style: italic;
-    pointer-events: none;
-}
-
-.sketch-note-small {
-    font-size: 0.85rem;
-    color: rgba(90, 124, 126, 0.35);
-    max-width: 150px;
-    line-height: 1.4;
-}
-
-.water-note {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.9rem;
-    text-transform: lowercase;
-}
-
-.water-symbol {
-    position: absolute;
-    font-size: 3rem;
-    color: rgba(255, 255, 255, 0.15);
-    font-family: serif;
-    animation: floatWave 4s ease-in-out infinite;
-}
-
-@keyframes floatWave {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-
-.tech-note {
-    font-size: 0.9rem;
-    color: rgba(201, 168, 130, 0.3);
-    text-transform: lowercase;
-}
-
-.sketch-annotation {
-    font-size: 0.75rem;
-    color: rgba(201, 168, 130, 0.5);
-}
-
-.sketch-circle {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border: 1px dashed rgba(201, 168, 130, 0.2);
-    border-radius: 50%;
-    pointer-events: none;
-}
-
-.sketch-arrow {
-    position: absolute;
-    font-size: 2rem;
-    color: rgba(201, 168, 130, 0.25);
-    pointer-events: none;
-}
-
-.sketch-underline {
-    position: absolute;
-    width: 100px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(201, 168, 130, 0.3), transparent);
-    pointer-events: none;
-}
-
-.sketch-line {
-    position: absolute;
-    width: 50px;
-    height: 1px;
-    background: rgba(201, 168, 130, 0.2);
-    pointer-events: none;
-}
-
-.ocean-subtext {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: 300;
+.font-1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 6vw, 5rem) !important;
     letter-spacing: 0.15em;
-    margin-top: 1rem;
+}
+
+.font-2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
     font-style: italic;
-    font-family: var(--font-handwritten);
 }
 
-/* ==========================================
-   UTILITY CLASSES
-   ========================================== */
-
-.hidden {
-    display: none !important;
+.font-3 {
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.1em;
 }
 
-.visible {
-    display: block !important;
+.font-4 {
+    font-family: 'Rubik Mono One', monospace;
+    font-size: clamp(1.2rem, 4vw, 3rem) !important;
+}
+
+.font-5 {
+    font-family: 'Black Ops One', cursive;
+    letter-spacing: 0.08em;
+}
+
+.font-6 {
+    font-family: 'Righteous', cursive;
+}
+
+.font-7 {
+    font-family: 'Permanent Marker', cursive;
+    transform: rotate(-2deg);
+}
+
+.font-8 {
+    font-family: 'Bangers', cursive;
+    letter-spacing: 0.12em;
+    font-size: clamp(2rem, 6vw, 5rem) !important;
+}
+
+.font-9 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+}
+
+.font-10 {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.font-11 {
+    font-family: 'Russo One', sans-serif;
+    letter-spacing: 0.05em;
+}
+
+.font-12 {
+    font-family: 'Titan One', cursive;
+}
+
+.font-13 {
+    font-family: 'Bungee', cursive;
+    font-size: clamp(1.5rem, 5vw, 4rem) !important;
+}
+
+.font-14 {
+    font-family: 'Staatliches', cursive;
+    letter-spacing: 0.2em;
+    font-size: clamp(2rem, 6vw, 5rem) !important;
 }
