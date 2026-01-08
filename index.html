@@ -22,47 +22,51 @@
         body {
             background: #fff;
             color: #000;
-            overflow: hidden;
             height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .text-item {
-            font-family: 'Minecraft', monospace;
-            font-size: 3rem;
-            color: #000;
-            white-space: nowrap;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            border-bottom: 1px solid #000;
         }
 
         .credit {
-            position: absolute;
-            top: 20px;
-            left: 20px;
             font-family: 'Minecraft', monospace;
             font-size: 0.8rem;
             color: #000;
             line-height: 1.5;
         }
 
+        .text-item {
+            font-family: 'Minecraft', monospace;
+            font-size: 0.8rem;
+            color: #000;
+            white-space: nowrap;
+        }
+
         @media (max-width: 768px) {
+            .header {
+                padding: 10px;
+            }
             .text-item {
-                font-size: 1.5rem;
+                font-size: 0.5rem;
             }
             .credit {
                 font-size: 0.5rem;
-                top: 10px;
-                left: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="credit">
-        produced by paradime<br>
-        1/11
+    <div class="header">
+        <div class="credit">
+            produced by paradime<br>
+            1/11
+        </div>
+        <div class="text-item">LOOK FORWARD</div>
     </div>
-    <div class="text-item">LOOK FORWARD</div>
 </body>
 </html>
