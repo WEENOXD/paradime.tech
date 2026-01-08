@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOOK FORWARD</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@900&family=Playfair+Display:wght@900&family=Courier+Prime:wght@700&family=Bebas+Neue&family=Righteous&family=Monoton&family=Permanent+Marker&family=Alfa+Slab+One&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('https://cdn.jsdelivr.net/gh/South-Paw/typeface-minecraft@master/files/minecraft-regular.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/gh/South-Paw/typeface-minecraft@master/files/minecraft-regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,108 +20,49 @@
         }
 
         body {
-            background: #000;
-            color: #fff;
-            overflow-x: hidden;
+            background: #fff;
+            color: #000;
+            overflow: hidden;
             height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        .container {
-            width: 100%;
-            text-align: center;
-            position: relative;
-        }
-
         .text-item {
-            padding: 60px 0;
-            font-size: 4rem;
+            font-family: 'Minecraft', monospace;
+            font-size: 3rem;
+            color: #000;
             white-space: nowrap;
         }
 
-        .minecraft {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 5rem;
-            color: #4CAF50;
-            text-shadow: 4px 4px 0px #2E7D32;
-        }
-
-        .font1 {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 900;
-            color: #FF5722;
-        }
-
-        .font2 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 900;
-            color: #2196F3;
-        }
-
-        .font3 {
-            font-family: 'Courier Prime', monospace;
-            font-weight: 700;
-            color: #FFC107;
-        }
-
-        .font4 {
-            font-family: 'Bebas Neue', sans-serif;
-            color: #9C27B0;
-        }
-
-        .font5 {
-            font-family: 'Righteous', sans-serif;
-            color: #00BCD4;
-        }
-
-        .font6 {
-            font-family: 'Monoton', cursive;
-            color: #E91E63;
-        }
-
-        .font7 {
-            font-family: 'Permanent Marker', cursive;
-            color: #FF9800;
-        }
-
-        .font8 {
-            font-family: 'Alfa Slab One', cursive;
-            color: #8BC34A;
+        .credit {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: 'Minecraft', monospace;
+            font-size: 0.8rem;
+            color: #000;
+            line-height: 1.5;
         }
 
         @media (max-width: 768px) {
             .text-item {
-                font-size: 2rem;
-                padding: 40px 0;
+                font-size: 1.5rem;
             }
-            .minecraft {
-                font-size: 2.5rem;
+            .credit {
+                font-size: 0.5rem;
+                top: 10px;
+                left: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="text-item font8">LOOK FORWARD</div>
-        <div class="text-item font7">LOOK FORWARD</div>
-        <div class="text-item font6">LOOK FORWARD</div>
-        <div class="text-item font5">LOOK FORWARD</div>
-        <div class="text-item font4">LOOK FORWARD</div>
-        <div class="text-item font3">LOOK FORWARD</div>
-        <div class="text-item font2">LOOK FORWARD</div>
-        <div class="text-item font1">LOOK FORWARD</div>
-        <div class="text-item minecraft">LOOK FORWARD</div>
-        <div class="text-item font1">LOOK FORWARD</div>
-        <div class="text-item font2">LOOK FORWARD</div>
-        <div class="text-item font3">LOOK FORWARD</div>
-        <div class="text-item font4">LOOK FORWARD</div>
-        <div class="text-item font5">LOOK FORWARD</div>
-        <div class="text-item font6">LOOK FORWARD</div>
-        <div class="text-item font7">LOOK FORWARD</div>
-        <div class="text-item font8">LOOK FORWARD</div>
+    <div class="credit">
+        produced by paradime<br>
+        1/11
     </div>
+    <div class="text-item">LOOK FORWARD</div>
 </body>
 </html>
