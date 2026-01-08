@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOOK FORWARD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'Minecraft';
@@ -47,7 +50,26 @@
             white-space: nowrap;
         }
 
+        .main-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 60px);
+        }
+
+        .handwritten {
+            font-family: 'Caveat', cursive;
+            font-size: 8rem;
+            font-weight: 700;
+            color: #000;
+            text-align: center;
+            transform: rotate(-2deg);
+        }
+
         @media (max-width: 768px) {
+            .handwritten {
+                font-size: 4rem;
+            }
             .header {
                 padding: 10px;
             }
@@ -64,6 +86,9 @@
     <div class="header">
         <div class="credit">produced by paradime 1.11</div>
         <div class="text-item">LOOK FORWARD</div>
+    </div>
+    <div class="main-content">
+        <div class="handwritten">cool shit<br>coming soon</div>
     </div>
 </body>
 </html>
