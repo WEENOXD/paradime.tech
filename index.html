@@ -49,9 +49,18 @@
 
         .main-content {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: calc(100vh - 60px);
+            gap: 20px;
+        }
+
+        .quote-text {
+            font-family: 'Minecraft', monospace;
+            font-size: 2rem;
+            color: #000;
+            text-align: center;
         }
 
         .main-image {
@@ -64,6 +73,9 @@
             .main-image {
                 max-width: 50%;
                 max-height: 50%;
+            }
+            .quote-text {
+                font-size: 1rem;
             }
             .header {
                 padding: 10px;
@@ -83,7 +95,9 @@
         <div class="text-item">LOOK FORWARD</div>
     </div>
     <div class="main-content">
+        <div class="quote-text">BEAUTY IS CREATED</div>
         <img src="image.jpeg" alt="Image" class="main-image">
+        <div class="quote-text">UNDER PRESSURE</div>
     </div>
 </body>
 </html>
