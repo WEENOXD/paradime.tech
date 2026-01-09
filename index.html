@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOOK FORWARD</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'Minecraft';
@@ -57,20 +54,16 @@
             height: calc(100vh - 60px);
         }
 
-        .handwritten {
-            font-family: 'Patrick Hand', cursive;
-            font-size: 7rem;
-            font-weight: normal;
-            color: #000;
-            text-align: center;
-            transform: rotate(-3deg);
-            line-height: 1.3;
-            letter-spacing: 2px;
+        .main-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
         }
 
         @media (max-width: 768px) {
-            .handwritten {
-                font-size: 3rem;
+            .main-image {
+                max-width: 95%;
+                max-height: 80%;
             }
             .header {
                 padding: 10px;
@@ -90,7 +83,7 @@
         <div class="text-item">LOOK FORWARD</div>
     </div>
     <div class="main-content">
-        <div class="handwritten">cool shit<br>coming soon</div>
+        <img src="image.jpeg" alt="Image" class="main-image">
     </div>
 </body>
 </html>
