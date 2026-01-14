@@ -4,7 +4,7 @@
 
 <svelte:window bind:scrollY />
 
-<div class="landing">
+<div class="landing" id="landing">
 	<!-- ASCII Art Background -->
 	<div class="ascii-background">
 		<pre class="ascii-left">{`          ●●●●●●●●●●●●●
@@ -90,6 +90,24 @@
 			</div>
 		</div>
 	</main>
+
+	<!-- Products Section Placeholder -->
+	<section id="products" style="min-height: 100vh; padding: 4rem 2rem; text-align: center;">
+		<h2 style="font-family: 'VCR OSD Mono', monospace; font-size: 2rem; margin-bottom: 2rem;">PRODUCTS</h2>
+		<p style="font-family: 'VCR OSD Mono', monospace;">Coming soon...</p>
+	</section>
+
+	<!-- Contact Section Placeholder -->
+	<section id="contact" style="min-height: 100vh; padding: 4rem 2rem; text-align: center;">
+		<h2 style="font-family: 'VCR OSD Mono', monospace; font-size: 2rem; margin-bottom: 2rem;">CONTACT</h2>
+		<p style="font-family: 'VCR OSD Mono', monospace;">Coming soon...</p>
+	</section>
+
+	<!-- Forward Section Placeholder -->
+	<section id="forward" style="min-height: 100vh; padding: 4rem 2rem; text-align: center;">
+		<h2 style="font-family: 'VCR OSD Mono', monospace; font-size: 2rem; margin-bottom: 2rem;">LOOK FORWARD</h2>
+		<p style="font-family: 'VCR OSD Mono', monospace;">The future awaits...</p>
+	</section>
 </div>
 
 <style>
