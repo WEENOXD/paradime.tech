@@ -1,203 +1,341 @@
-<script lang="ts">
-	let downloading = false;
-
-	function handleDownload() {
-		downloading = true;
-		// Point to the monroe archive we'll create
-		window.location.href = '/monroe1.zip';
-		setTimeout(() => {
-			downloading = false;
-		}, 2000);
-	}
+<script>
+	let scrollY = $state(0);
 </script>
 
-<svelte:head>
-	<title>paradime.tech</title>
-	<meta name="description" content="MONROE1 - AI-powered lead generation CRM" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-</svelte:head>
+<svelte:window bind:scrollY />
 
-<div class="container">
-	<div class="content">
-		<h1>PARADIME.TECH</h1>
+<div class="landing">
+	<!-- ASCII Art Background -->
+	<div class="ascii-background">
+		<pre class="ascii-left">{`          ●●●●●●●●●●●●●
+       ●●●●●●●●●●●●●●●●●●●●●
+    ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+   ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+●●●●●● ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+●●●●●●●●●●●●●●●●    ●●●●●●●●●●●●  ●●●●●●●●●●●●●●●
+●●●●●●●●●●●●●●●     ●●●●●●●●●●●●●  ●●●●●●●●●●●●●●
+●●●●●●●●●●●●●●       ●●●●●●●●●●●●●●●     ●●●●●● ●●●●●●
+●●●●●●●●●●●●●●        ●●●●●●●●●●●●●●●●    ●●●●●●●● ●●●●
+●●●●●●●●●●●●           ●●●●●●●●●●●●●        ●●●●●●●● ●●●
+●●●●●●●●●●              ●●●●●●●●●●●●●        ●●●●●●●●
+●●●●●●●●●                  ●●●●●●●●●●●●        ●●●●●
+●●●●●                         ●●●●●●●●            ●● ●●
+●●`}</pre>
 
-		<div class="spacer"></div>
-
-		<h2>MONROE1</h2>
-
-		<p class="description">
-			AI-POWERED LEAD GENERATION<br />
-			& SALES AUTOMATION CRM
-		</p>
-
-		<p class="details">
-			MULTI-SOURCE DATA COLLECTION.<br />
-			INTERACTIVE MAP SEARCH.<br />
-			SMART FILTERING & QUALITY SCORING.<br />
-			LOCAL-FIRST STORAGE.<br />
-			CROSS-PLATFORM DESKTOP APPLICATION.
-		</p>
-
-		<button class="download-btn" on:click={handleDownload} disabled={downloading}>
-			{downloading ? 'DOWNLOADING...' : 'DOWNLOAD MONROE1'}
-		</button>
-
-		<div class="spacer-large"></div>
-
-		<p class="message">
-			HI FELIX<br />
-			I CANT WAIT TO GET RICH WIT U
-		</p>
-
-		<div class="footer">
-			<p>© 2026 PARADIME TECHNOLOGIES</p>
-		</div>
+		<pre class="ascii-right">{`                                                    ●●●●●●●●
+                                               ●●●●●●●●●●●●●●●●●●●
+                                          ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+                                     ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+                               ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+                       ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+                ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+          ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+       ●●●●      ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+                 ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+             ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●            ●●●●●●●●●
+           ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●                                           ●●
+          ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+           ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+              ●●●●●●●●●●●●●●●    ●●●●●●●●
+                ●●●●●●●●●●●        ●●●●●●
+                  ●●●●●●●●●●●       ●●●●●
+                   ●●●●●●●●●●●      ●●●●
+                     ●●●● ●●●●      ●●●`}</pre>
 	</div>
+
+	<!-- Header -->
+	<header class="header">
+		<div class="logo">
+			<span class="logo-dot">●</span>
+			<span class="logo-text">paradime.tech</span>
+		</div>
+		<nav class="nav">
+			<a href="#landing" class="nav-link">
+				<span class="nav-dot">●</span>
+				landing
+			</a>
+			<a href="#products" class="nav-link">
+				<span class="nav-dot">●</span>
+				products
+			</a>
+			<a href="#contact" class="nav-link">
+				<span class="nav-dot">●</span>
+				contact
+			</a>
+			<a href="#forward" class="nav-button">
+				LOOK FORWARD
+				<span class="button-icon">⊕</span>
+			</a>
+		</nav>
+	</header>
+
+	<!-- Hero Section -->
+	<main class="hero">
+		<div class="hero-content">
+			<p class="tagline">bringing technology to businesses</p>
+			<h1 class="headline">ALL ACROSS AMERICA</h1>
+
+			<a href="#forward" class="cta-button">
+				[ LOOK FORWARD ]
+			</a>
+
+			<div class="scroll-hint">
+				<p class="scroll-text">Scroll to see<br>how our products<br>will bring your<br>business to the<br>future</p>
+				<div class="scroll-arrow">↓</div>
+			</div>
+		</div>
+	</main>
 </div>
 
 <style>
-	:global(body) {
+	@font-face {
+		font-family: 'VCR OSD Mono';
+		src: url('/fonts/VCR_OSD_MONO.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	:global(*) {
 		margin: 0;
 		padding: 0;
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		background: #000;
-		color: #fff;
+		box-sizing: border-box;
+	}
+
+	:global(body) {
+		background: #fff;
+		color: #000;
 		overflow-x: hidden;
 	}
 
-	.container {
+	.landing {
+		min-height: 100vh;
+		position: relative;
+		font-family: 'VCR OSD Mono', -apple-system, BlinkMacSystemFont, sans-serif;
+	}
+
+	/* ASCII Background */
+	.ascii-background {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		transform: translateY(-50%);
+		display: flex;
+		justify-content: space-between;
+		pointer-events: none;
+		z-index: 0;
+		padding: 0 2rem;
+	}
+
+	.ascii-left,
+	.ascii-right {
+		font-family: monospace;
+		font-size: 8px;
+		line-height: 1;
+		color: #000;
+		white-space: pre;
+		opacity: 0.9;
+	}
+
+	.ascii-left {
+		text-align: left;
+	}
+
+	.ascii-right {
+		text-align: right;
+	}
+
+	/* Header */
+	.header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.5rem 3rem;
+		z-index: 100;
+		background: rgba(255, 255, 255, 0.95);
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.logo-dot {
+		font-size: 0.75rem;
+	}
+
+	.logo-text {
+		font-family: 'VCR OSD Mono', monospace;
+		font-size: 1.1rem;
+		font-weight: 400;
+		letter-spacing: -0.02em;
+	}
+
+	.nav {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.nav-link {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-family: 'VCR OSD Mono', monospace;
+		font-size: 0.9rem;
+		color: #000;
+		text-decoration: none;
+		transition: opacity 0.2s;
+	}
+
+	.nav-link:hover {
+		opacity: 0.6;
+	}
+
+	.nav-dot {
+		font-size: 0.5rem;
+	}
+
+	.nav-button {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-family: 'VCR OSD Mono', monospace;
+		font-size: 0.85rem;
+		color: #000;
+		text-decoration: none;
+		padding: 0.6rem 1rem;
+		border: 1px solid #000;
+		transition: all 0.2s;
+	}
+
+	.nav-button:hover {
+		background: #000;
+		color: #fff;
+	}
+
+	.button-icon {
+		font-size: 1rem;
+	}
+
+	/* Hero Section */
+	.hero {
 		min-height: 100vh;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 40px 20px;
+		position: relative;
+		z-index: 1;
 	}
 
-	.content {
-		max-width: 900px;
-		width: 100%;
+	.hero-content {
 		text-align: center;
+		padding: 2rem;
 	}
 
-	h1 {
-		font-size: clamp(48px, 12vw, 120px);
-		font-weight: 900;
-		letter-spacing: -0.03em;
-		margin: 0;
-		line-height: 0.9;
-		text-transform: uppercase;
-	}
-
-	h2 {
-		font-size: clamp(36px, 8vw, 80px);
-		font-weight: 900;
-		letter-spacing: -0.02em;
-		margin: 0;
-		line-height: 0.9;
-		text-transform: uppercase;
-		color: #888;
-	}
-
-	.description {
-		font-size: clamp(18px, 3vw, 28px);
-		font-weight: 700;
-		letter-spacing: 0.05em;
-		margin: 60px 0 40px 0;
-		line-height: 1.4;
-		text-transform: uppercase;
-	}
-
-	.details {
-		font-size: clamp(12px, 2vw, 16px);
+	.tagline {
+		font-family: 'VCR OSD Mono', monospace;
+		font-size: 1.1rem;
 		font-weight: 400;
-		letter-spacing: 0.1em;
-		margin: 0 0 60px 0;
-		line-height: 1.8;
-		text-transform: uppercase;
-		color: #666;
-	}
-
-	.download-btn {
-		background: #fff;
-		color: #000;
-		border: none;
-		padding: 24px 60px;
-		font-size: clamp(14px, 2.5vw, 20px);
-		font-weight: 900;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		font-family: inherit;
-	}
-
-	.download-btn:hover:not(:disabled) {
-		background: #ddd;
-		transform: scale(1.02);
-	}
-
-	.download-btn:active:not(:disabled) {
-		transform: scale(0.98);
-	}
-
-	.download-btn:disabled {
-		opacity: 0.6;
-		cursor: not-allowed;
-	}
-
-	.message {
-		font-size: clamp(20px, 4vw, 40px);
-		font-weight: 700;
+		margin-bottom: 0.5rem;
 		letter-spacing: 0.02em;
-		margin: 0;
-		line-height: 1.3;
-		text-transform: uppercase;
-		font-style: italic;
 	}
 
-	.spacer {
-		height: 80px;
+	.headline {
+		font-family: 'Bebas Neue', Impact, sans-serif;
+		font-size: clamp(4rem, 12vw, 8rem);
+		font-weight: 400;
+		letter-spacing: 0.02em;
+		line-height: 0.9;
+		margin-bottom: 2rem;
 	}
 
-	.spacer-large {
-		height: 120px;
+	.cta-button {
+		display: inline-block;
+		font-family: 'VCR OSD Mono', monospace;
+		font-size: 0.9rem;
+		color: #000;
+		text-decoration: none;
+		padding: 0.8rem 1.5rem;
+		border: 2px solid #000;
+		margin-bottom: 3rem;
+		transition: all 0.2s;
 	}
 
-	.footer {
-		margin-top: 100px;
-		padding-top: 40px;
-		border-top: 1px solid #333;
+	.cta-button:hover {
+		background: #000;
+		color: #fff;
 	}
 
-	.footer p {
-		font-size: 12px;
-		letter-spacing: 0.15em;
-		color: #555;
-		text-transform: uppercase;
-		margin: 0;
+	.scroll-hint {
+		position: absolute;
+		bottom: 3rem;
+		left: 3rem;
 	}
 
+	.scroll-text {
+		font-family: 'VCR OSD Mono', monospace;
+		font-size: 0.75rem;
+		line-height: 1.4;
+		text-align: left;
+		margin-bottom: 0.5rem;
+	}
+
+	.scroll-arrow {
+		font-family: 'VCR OSD Mono', monospace;
+		font-size: 1.5rem;
+		animation: bounce 2s infinite;
+	}
+
+	@keyframes bounce {
+		0%, 20%, 50%, 80%, 100% {
+			transform: translateY(0);
+		}
+		40% {
+			transform: translateY(10px);
+		}
+		60% {
+			transform: translateY(5px);
+		}
+	}
+
+	/* Responsive */
 	@media (max-width: 768px) {
-		.container {
-			padding: 30px 15px;
+		.header {
+			padding: 1rem 1.5rem;
+			flex-direction: column;
+			gap: 1rem;
 		}
 
-		.download-btn {
-			padding: 20px 40px;
-			width: 100%;
-			max-width: 400px;
+		.nav {
+			gap: 1rem;
+			flex-wrap: wrap;
+			justify-content: center;
 		}
 
-		.spacer {
-			height: 40px;
+		.ascii-background {
+			display: none;
 		}
 
-		.spacer-large {
-			height: 60px;
+		.scroll-hint {
+			position: relative;
+			bottom: auto;
+			left: auto;
+			text-align: center;
 		}
 
-		.footer {
-			margin-top: 60px;
+		.scroll-text {
+			text-align: center;
 		}
 	}
 </style>
