@@ -1,2 +1,10 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to learn SvelteKit</p>
+<script lang="ts">
+	import LandingPoster from '$lib/components/LandingPoster.svelte';
+</script>
+
+<svelte:head>
+	<title>Paradime Technologies</title>
+	<meta name="description" content="Bringing technology to businesses all across America" />
+</svelte:head>
+
+<LandingPoster />
