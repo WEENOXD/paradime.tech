@@ -115,7 +115,7 @@
 	.landing {
 		min-height: 100vh;
 		position: relative;
-		font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+		font-family: 'VCR OSD Mono', -apple-system, BlinkMacSystemFont, sans-serif;
 	}
 
 	/* ASCII Background */
@@ -252,11 +252,11 @@
 	}
 
 	.headline {
-		font-family: 'Inter', sans-serif;
-		font-size: clamp(3rem, 10vw, 6rem);
-		font-weight: 900;
-		letter-spacing: -0.03em;
-		line-height: 1;
+		font-family: 'Bebas Neue', Impact, sans-serif;
+		font-size: clamp(4rem, 12vw, 8rem);
+		font-weight: 400;
+		letter-spacing: 0.02em;
+		line-height: 0.9;
 		margin-bottom: 2rem;
 	}
 
