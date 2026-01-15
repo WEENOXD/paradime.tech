@@ -27,13 +27,13 @@
 		<div class="info-grid">
 			<div class="info-card">
 				<div class="pixel info-label">PHONE</div>
-				<p><a href="tel:+15555555555">(555) 555-5555</a></p>
+				<p><a href="tel:+17072923201">+1-707-292-3201</a></p>
 				<p class="info-note">Call or text anytime</p>
 			</div>
 
 			<div class="info-card">
 				<div class="pixel info-label">EMAIL</div>
-				<p><a href="mailto:hello@paradime.tech">hello@paradime.tech</a></p>
+				<p><a href="mailto:josephgannonai@gmail.com">josephgannonai@gmail.com</a></p>
 				<p class="info-note">We respond within 24 hours</p>
 			</div>
 
