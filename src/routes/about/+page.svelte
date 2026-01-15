@@ -31,7 +31,7 @@
 		<p>We believe small business tech should be:</p>
 		<ul>
 			<li><strong>Simple to set up</strong> - We handle the technical work</li>
-			<li><strong>Affordable</strong> - Transparent pricing, no surprise fees</li>
+			<li><strong>Affordable</strong> - Custom pricing for your business, call for a quote</li>
 			<li><strong>Actually useful</strong> - Built to solve real problems, not add complexity</li>
 			<li><strong>Backed by humans</strong> - Real support when you need help</li>
 		</ul>

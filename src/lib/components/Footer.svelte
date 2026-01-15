@@ -20,7 +20,6 @@
 				<div class="link-group">
 					<h4>Company</h4>
 					<a href="/about">About</a>
-					<a href="/pricing">Pricing</a>
 					<a href="/contact">Contact</a>
 				</div>
 			</div>
