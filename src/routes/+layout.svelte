@@ -1,12 +1,19 @@
-<script>
+<script lang="ts">
+	import '../app.css';
+	import Nav from '$lib/components/Nav.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+
 	let { children } = $props();
 </script>
 
-{@render children()}
+<Nav />
+<main>
+	{@render children()}
+</main>
+<Footer />
 
 <style>
-	:global(body) {
-		margin: 0;
-		font-family: system-ui, -apple-system, sans-serif;
+	main {
+		min-height: 60vh;
 	}
 </style>
