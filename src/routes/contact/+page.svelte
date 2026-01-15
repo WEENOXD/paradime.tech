@@ -1,7 +1,3 @@
-<script lang="ts">
-	import ContactForm from '$lib/components/ContactForm.svelte';
-</script>
-
 <svelte:head>
 	<title>Contact - Paradime Tech</title>
 	<meta
@@ -15,12 +11,10 @@
 		<div class="pixel overline">GET IN TOUCH</div>
 		<h1>Let's talk</h1>
 		<p class="lead">
-			Ready to never miss a lead again? Fill out the form below or give us a call.
+			Ready to never miss a lead again? Give us a call or send an email.
 		</p>
 	</div>
 </section>
-
-<ContactForm />
 
 <section class="contact-info">
 	<div class="container-narrow">

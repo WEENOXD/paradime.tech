@@ -4,7 +4,6 @@
 	import HowItWorks from '$lib/components/HowItWorks.svelte';
 	import Solutions from '$lib/components/Solutions.svelte';
 	import FAQ from '$lib/components/FAQ.svelte';
-	import ContactForm from '$lib/components/ContactForm.svelte';
 </script>
 
 <svelte:head>
@@ -20,4 +19,3 @@
 <HowItWorks />
 <Solutions />
 <FAQ />
-<ContactForm />
