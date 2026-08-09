@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8f7f2" />
+    <link rel="icon" type="image/svg+xml" href="/paloma/favicon.svg" />
+    <meta
+      name="description"
+      content="Paloma — compare philosophical frameworks without outsourcing the decision."
+    />
+    <script>
+      try {
+        const theme = localStorage.getItem("paloma-theme")
+        const dark = theme === "dark" || (theme === "system" && matchMedia("(prefers-color-scheme: dark)").matches)
+        if (dark) document.documentElement.setAttribute("data-theme", "dark")
+      } catch {}
+    </script>
+    <title>paloma</title>
+    <script type="module" crossorigin src="/paloma/assets/index-DQD9UpPZ.js"></script>
+    <link rel="stylesheet" crossorigin href="/paloma/assets/index--H84m5mo.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
